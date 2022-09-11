@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +12,9 @@ import java.util.Scanner;
 public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
+    private static ArrayList<HashMap<String, String>> someJobs;
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -60,6 +64,7 @@ public class TechJobs {
                 // What is their search term?
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
+//                System.out.println(searchTerm);
 
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
@@ -112,14 +117,56 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+//        HashMap<String, String> columnChoices = new HashMap<>();
+//        String path = "src//main//resources//job_data.csv";
+//        System.out.println(path);
+//        BufferedReader reader = null;
+//        String line = "";
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+            System.out.println("Invalid entry");
+        } else {
+            for (HashMap<String, String> sJobs : someJobs) {
+                System.out.println("***** \n");
+                for (Map.Entry sJob : sJobs.entrySet()) {
+                    System.out.println(sJob.getKey() + " : " + sJob.getValue());
+                }
+            }
+
+//            try {
+//                reader = new BufferedReader(new FileReader(path));
+//                while ((line = reader.readLine()) != null) {
+//                    String[] row = line.split(",");
+////                String [] column = line.split("\n");
+//                    System.out.println("*****" + "\n" + "position type: " + row[3] + "\n" + "name: " + row[0] + "\n" + "employer: " + row[1] + "\n" + "location: " + row[2] + "\n" + "core competency: " + row[4] + "\n" + "*****" + "\n");
+////                for (String index : row ){
+//////                    System.out.printf("%-10s", "\n" + index);
+//////                    for (String indexes : row) {
+////                        System.out.printf(index[0] + "\n" + ": ");
+////                    }
+//                }
+//                System.out.println();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            } finally {
+//                try {
+//                    reader.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//return someJobs;
+        }
     }
 }
+//    public static void setSomeJobs(Object someJobs) {
+//        TechJobs.someJobs = (ArrayList<HashMap<String, String>>) someJobs;
+//    }
+//}
