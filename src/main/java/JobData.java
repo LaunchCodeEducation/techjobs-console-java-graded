@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -47,6 +44,12 @@ public class JobData {
 
         return values;
     }
+
+//    private static void loadData() {
+//        if (isDataLoaded) {
+//            return;
+//        }
+//    }
 
     public static ArrayList<HashMap<String, String>> findAll() {
 
@@ -91,16 +94,28 @@ public class JobData {
      * Search all columns for the given term
      *
      * @param value The search term to look for
-     * @return      List of all jobs with at least one field containing the value
+     * @return List of all jobs with at least one field containing the value
      */
-    public static ArrayList<HashMap<String, String>> findByValue(String value) {
-       
-        // load data, if not already loaded
-        loadData();
-
-        // TODO - implement this method
-        return null;
-    }
+//    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+//
+//        // load data, if not already loaded
+//        loadData();
+//        for (HashMap<String, String> job : allJobs) {
+//
+//            for (Map.Entry<String, String> values : job.entrySet()) {
+//
+//                String aValue = values.getValue().toLowerCase();
+//
+//                HashSet<HashMap<String, String>> jobs = new HashSet<>();
+//                if (aValue.contains(value)) {
+//                    jobs.add(job);
+//                    break;
+//
+//                }
+//
+//                // TODO - implement this method
+//                return jobs;
+//            }
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -140,7 +155,27 @@ public class JobData {
         } catch (IOException e) {
             System.out.println("Failed to load job data");
             e.printStackTrace();
-        }
-    }
+        }}
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
-}
+        // load data, if not already loaded
+        loadData();
+        for (HashMap<String, String> job : allJobs) {
+
+            for (Map.Entry<String, String> values : job.entrySet()) {
+
+                String aValue = values.getValue().toLowerCase();
+
+                HashSet<HashMap<String, String>> jobs = new HashSet<>();
+                if (aValue.contains(value)) {
+                    jobs.add(job);
+                    break;
+
+                }
+
+                // TODO - implement this method
+//                return jobs;
+            }
+        }
+        return null;
+    }}
