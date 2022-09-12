@@ -9,7 +9,7 @@ import java.util.*;
 public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
-    private static ArrayList<HashMap<String, String>> someJobs;
+//    private static ArrayList<HashMap<String, String>> someJobs;
 
     public static void main(String[] args) {
 
