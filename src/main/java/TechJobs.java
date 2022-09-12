@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -67,7 +64,7 @@ public class TechJobs {
 //                System.out.println(searchTerm);
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    printJobs(Objects.requireNonNull(JobData.findByValue(searchTerm)));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -138,6 +135,7 @@ public class TechJobs {
                 for (Map.Entry sJob : sJobs.entrySet()) {
                     System.out.println(sJob.getKey() + " : " + sJob.getValue());
                 }
+                break;
             }
 
 //            try {

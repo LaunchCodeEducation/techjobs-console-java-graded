@@ -160,22 +160,18 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-        for (HashMap<String, String> job : allJobs) {
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> row : allJobs) {
+            String aValue = row.toString();
+            if ((aValue.toLowerCase()).contains(value.toLowerCase())){
+                jobs.add(row);
 
-            for (Map.Entry<String, String> values : job.entrySet()) {
-
-                String aValue = values.getValue().toLowerCase();
-
-                HashSet<HashMap<String, String>> jobs = new HashSet<>();
-                if (aValue.contains(value)) {
-                    jobs.add(job);
-                    break;
-
-                }
+            }
 
                 // TODO - implement this method
 //                return jobs;
             }
-        }
-        return null;
-    }}
+        return jobs;
+    }
+//    break;
+}
