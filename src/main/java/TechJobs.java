@@ -126,15 +126,18 @@ public class TechJobs {
 //        System.out.println(path);
 //        BufferedReader reader = null;
 //        String line = "";
+        System.out.printf("\n");
 
         if (someJobs.isEmpty()) {
-            System.out.println("Invalid entry");
+            System.out.printf("Invalid entry");
         } else {
             for (HashMap<String, String> sJobs : someJobs) {
-                System.out.println("***** \n");
+                System.out.printf("*****\n");
                 for (Map.Entry sJob : sJobs.entrySet()) {
-                    System.out.println(sJob.getKey() + " : " + sJob.getValue());
+                    System.out.println(sJob.getKey() + ": " + sJob.getValue());
                 }
+                System.out.printf("*****\n");
+
                 break;
             }
 
