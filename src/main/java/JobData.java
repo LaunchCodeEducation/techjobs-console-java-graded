@@ -162,12 +162,11 @@ public class JobData {
         loadData();
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.toString();
-            if ((aValue.toLowerCase()).contains(value.toLowerCase())){
+            for (String key : row.keySet()) {
+            String aValue = row.get(key);
+            if (aValue.toLowerCase().contains(value.toLowerCase())){
                 jobs.add(row);
-
-            }
-
+            }}
                 // TODO - implement this method
 //                return jobs;
             }
