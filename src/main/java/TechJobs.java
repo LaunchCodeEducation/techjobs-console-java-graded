@@ -139,9 +139,6 @@ public class TechJobs {
                 }
                 System.out.print("*****");
                 System.out.print("\n");
-
-
-                break;
             }
 
 //            try {
