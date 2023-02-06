@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -48,6 +45,12 @@ public class JobData {
         return values;
     }
 
+//    private static void loadData() {
+//        if (isDataLoaded) {
+//            return;
+//        }
+//    }
+
     public static ArrayList<HashMap<String, String>> findAll() {
 
         // load data, if not already loaded
@@ -77,9 +80,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -91,16 +94,23 @@ public class JobData {
      * Search all columns for the given term
      *
      * @param value The search term to look for
-     * @return      List of all jobs with at least one field containing the value
+     * @return List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
-        // load data, if not already loaded
-        loadData();
-
+//
+    loadData();
+    ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> row : allJobs) {
+        for (String key : row.keySet()) {
+            String aValue = row.get(key);
+            if (aValue.toLowerCase().contains(value.toLowerCase())){
+                jobs.add(row);
+                break;
+            }}
         // TODO - implement this method
-        return null;
+//                return jobs;
     }
+        return jobs;}
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -140,7 +150,23 @@ public class JobData {
         } catch (IOException e) {
             System.out.println("Failed to load job data");
             e.printStackTrace();
-        }
-    }
-
+        }}
+//    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+//
+//        // load data, if not already loaded
+//        loadData();
+//        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+//        for (HashMap<String, String> row : allJobs) {
+//            for (String key : row.keySet()) {
+//            String aValue = row.get(key);
+//            if (aValue.toLowerCase().contains(value.toLowerCase())){
+//                jobs.add(row);
+//                break;
+//            }}
+//                // TODO - implement this method
+////                return jobs;
+//            }
+//        return jobs;
+//    }
+//    break;
 }
